@@ -89,7 +89,7 @@ describe("UCSBOrganizationForm tests", () => {
     );
 
     expect(await screen.findByText(/Create/)).toBeInTheDocument();
-    const submitButton = screen.getByText(/Create/);
+    let submitButton = screen.getByText(/Create/);
     fireEvent.click(submitButton);
 
     expectedHeaders.forEach(async (headerText) => {
@@ -100,9 +100,41 @@ describe("UCSBOrganizationForm tests", () => {
     });
     // await screen.findByText(/OrgCode is required/);
     // expect(screen.getByText(/Description is required/)).toBeInTheDocument();
+    submitButton = screen.getByTestId(`${testId}-submit`);
 
-    const nameInput = screen.getByTestId(`${testId}-orgCode`);
-    fireEvent.change(nameInput, { target: { value: "a".repeat(31) } });
+    const orgCode = screen.getByTestId(`${testId}-orgCode`);
+    fireEvent.change(orgCode, { target: { value: "a".repeat(31) } });
+    fireEvent.click(submitButton);
+
+    await waitFor(() => {
+      expect(screen.getByText(/Max length 30 characters/)).toBeInTheDocument();
+    });
+
+    fireEvent.change(orgCode, { target: { value: "a" } });
+    const orgTranslation = screen.getByTestId(`${testId}-orgTranslation`);
+    fireEvent.change(orgTranslation, { target: { value: "a".repeat(31) } });
+    fireEvent.click(submitButton);
+
+    await waitFor(() => {
+      expect(screen.getByText(/Max length 30 characters/)).toBeInTheDocument();
+    });
+
+    fireEvent.change(orgTranslation, { target: { value: "a" } });
+    const orgTranslationShort = screen.getByTestId(
+      `${testId}-orgTranslationShort`
+    );
+    fireEvent.change(orgTranslationShort, {
+      target: { value: "a".repeat(31) },
+    });
+    fireEvent.click(submitButton);
+
+    await waitFor(() => {
+      expect(screen.getByText(/Max length 30 characters/)).toBeInTheDocument();
+    });
+
+    fireEvent.change(orgTranslationShort, { target: { value: "a" } });
+    const inactive = screen.getByTestId(`${testId}-inactive`);
+    fireEvent.change(inactive, { target: { value: "a".repeat(31) } });
     fireEvent.click(submitButton);
 
     await waitFor(() => {

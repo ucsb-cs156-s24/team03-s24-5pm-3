@@ -90,7 +90,7 @@ function UCSBOrganizationForm({
           isInvalid={Boolean(errors.inactive)}
           {...register("inactive", {
             required: "Inactive is required.",
-            pattern: /^((true)|(false))$/g,
+            // pattern: /^((true)|(false))$/g,
           })}
         >
           <option value=""></option>
