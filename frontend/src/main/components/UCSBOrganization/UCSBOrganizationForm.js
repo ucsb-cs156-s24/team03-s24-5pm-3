@@ -21,24 +21,10 @@ function UCSBOrganizationForm({
 
   return (
     <Form onSubmit={handleSubmit(submitAction)}>
-      {/* {initialContents && (
-                <Form.Group className="mb-3" >
-                    <Form.Label htmlFor="id">Id</Form.Label>
-                    <Form.Control
-                        data-testid={testIdPrefix + "-id"}
-                        id="id"
-                        type="text"
-                        {...register("id")}
-                        value={initialContents.id}
-                        disabled
-                    />
-                </Form.Group>
-            )} */}
-
       <Form.Group className="mb-3">
         <Form.Label htmlFor="orgCode">OrgCode</Form.Label>
         <Form.Control
-          data-testid={testIdPrefix + "-name"}
+          data-testid={testIdPrefix + "-orgCode"}
           id="orgCode"
           type="text"
           isInvalid={Boolean(errors.orgCode)}
@@ -56,9 +42,9 @@ function UCSBOrganizationForm({
       </Form.Group>
 
       <Form.Group className="mb-3">
-        <Form.Label htmlFor="orgTranslation">OrgTranslation </Form.Label>
+        <Form.Label htmlFor="orgTranslation">OrgTranslation</Form.Label>
         <Form.Control
-          data-testid={testIdPrefix + "-name"}
+          data-testid={testIdPrefix + "-orgTranslation"}
           id="orgTranslation"
           type="text"
           isInvalid={Boolean(errors.orgTranslation)}
@@ -76,11 +62,9 @@ function UCSBOrganizationForm({
       </Form.Group>
 
       <Form.Group className="mb-3">
-        <Form.Label htmlFor="orgTranslationShort">
-          OrgTranslationShort{" "}
-        </Form.Label>
+        <Form.Label htmlFor="orgTranslationShort">OrgTranslationShort</Form.Label>
         <Form.Control
-          data-testid={testIdPrefix + "-name"}
+          data-testid={testIdPrefix + "-orgTranslationShort"}
           id="orgTranslationShort"
           type="text"
           isInvalid={Boolean(errors.orgTranslationShort)}
@@ -98,9 +82,9 @@ function UCSBOrganizationForm({
       </Form.Group>
 
       <Form.Group className="mb-3">
-        <Form.Label htmlFor="inactive">Inactive </Form.Label>
+        <Form.Label htmlFor="inactive">Inactive</Form.Label>
         <Form.Select
-          data-testid={testIdPrefix + "-name"}
+          data-testid={testIdPrefix + "-inactive"}
           id="inactive"
           type="text"
           isInvalid={Boolean(errors.inactive)}
