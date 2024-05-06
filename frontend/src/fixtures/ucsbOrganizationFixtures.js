@@ -1,12 +1,10 @@
 const ucsbOrganizationFixtures = {
-  oneUcsbOrganization: [
-    {
-      orgCode: "ORG1",
-      orgTranslationShort: "OG1",
-      orgTranslation: "Organization 1",
-      inactive: false,
-    },
-  ],
+  oneUcsbOrganization: {
+    orgCode: "ORG1",
+    orgTranslationShort: "OG1",
+    orgTranslation: "Organization 1",
+    inactive: false,
+  },
 
   threeUcsbOrganizations: [
     {
