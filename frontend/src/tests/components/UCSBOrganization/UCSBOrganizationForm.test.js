@@ -35,7 +35,7 @@ describe("UCSBOrganizationForm tests", () => {
 
     expect(await screen.findByText(/Create/)).toBeInTheDocument();
 
-    expectedHeaders.forEach((headerText) => {
+    expectedHeaders.forEach(async (headerText) => {
       const header = screen.getByText(headerText);
       expect(header).toBeInTheDocument();
     });
@@ -91,14 +91,12 @@ describe("UCSBOrganizationForm tests", () => {
     expect(await screen.findByText(/Create/)).toBeInTheDocument();
     let submitButton = screen.getByText(/Create/);
     fireEvent.click(submitButton);
+    expect(submitButton).toBeInTheDocument();
 
-    expectedHeaders.forEach(async (headerText) => {
-      await screen.findByText(new RegExp(`/${headerText} is required/`));
-      expect(
-        screen.getByText(new RegExp(`/${headerText} is required/`))
-      ).toBeInTheDocument();
-    });
-    // await screen.findByText(/OrgCode is required/);
+    await screen.findByText(/OrgCode is required/);
+    await screen.findByText(/OrgTranslation is required/);
+    await screen.findByText(/OrgTranslationShort is required/);
+    await screen.findByText(/Inactive is required/);
     // expect(screen.getByText(/Description is required/)).toBeInTheDocument();
     submitButton = screen.getByTestId(`${testId}-submit`);
 
@@ -110,16 +108,30 @@ describe("UCSBOrganizationForm tests", () => {
       expect(screen.getByText(/Max length 30 characters/)).toBeInTheDocument();
     });
 
-    fireEvent.change(orgCode, { target: { value: "a" } });
+    fireEvent.change(orgCode, { target: { value: "" } });
+    fireEvent.click(submitButton);
+
+    await waitFor(() => {
+      expect(screen.getByText(/OrgCode is required/)).toBeInTheDocument();
+    });
+
     const orgTranslation = screen.getByTestId(`${testId}-orgTranslation`);
-    fireEvent.change(orgTranslation, { target: { value: "a".repeat(31) } });
+    fireEvent.change(orgTranslation, { target: { value: "a".repeat(33) } });
     fireEvent.click(submitButton);
 
     await waitFor(() => {
       expect(screen.getByText(/Max length 30 characters/)).toBeInTheDocument();
     });
 
-    fireEvent.change(orgTranslation, { target: { value: "a" } });
+    fireEvent.change(orgTranslation, { target: { value: "" } });
+    fireEvent.click(submitButton);
+
+    await waitFor(() => {
+      expect(
+        screen.getByText(/OrgTranslation is required/)
+      ).toBeInTheDocument();
+    });
+
     const orgTranslationShort = screen.getByTestId(
       `${testId}-orgTranslationShort`
     );
@@ -132,13 +144,24 @@ describe("UCSBOrganizationForm tests", () => {
       expect(screen.getByText(/Max length 30 characters/)).toBeInTheDocument();
     });
 
-    fireEvent.change(orgTranslationShort, { target: { value: "a" } });
-    const inactive = screen.getByTestId(`${testId}-inactive`);
-    fireEvent.change(inactive, { target: { value: "a".repeat(31) } });
+    fireEvent.change(orgTranslationShort, { target: { value: "" } });
     fireEvent.click(submitButton);
 
     await waitFor(() => {
-      expect(screen.getByText(/Max length 30 characters/)).toBeInTheDocument();
+      expect(
+        screen.getByText(/OrgTranslationShort is required/)
+      ).toBeInTheDocument();
+    });
+
+    const inactive = screen.getByTestId(`${testId}-inactive`);
+
+    fireEvent.change(inactive, { target: { value: "" } });
+    fireEvent.click(submitButton);
+
+    await waitFor(() => {
+      expect(
+        screen.getByText(/Inactive is required/)
+      ).toBeInTheDocument();
     });
   });
 });
