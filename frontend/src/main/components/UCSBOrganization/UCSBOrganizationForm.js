@@ -51,7 +51,7 @@ function UCSBOrganizationForm({
           })}
         />
         <Form.Control.Feedback type="invalid">
-          {errors.name?.message}
+          {errors.orgCode?.message}
         </Form.Control.Feedback>
       </Form.Group>
 
@@ -71,7 +71,7 @@ function UCSBOrganizationForm({
           })}
         />
         <Form.Control.Feedback type="invalid">
-          {errors.name?.message}
+          {errors.orgTranslation?.message}
         </Form.Control.Feedback>
       </Form.Group>
 
@@ -93,7 +93,7 @@ function UCSBOrganizationForm({
           })}
         />
         <Form.Control.Feedback type="invalid">
-          {errors.name?.message}
+          {errors.orgTranslationShort?.message}
         </Form.Control.Feedback>
       </Form.Group>
 
@@ -109,11 +109,12 @@ function UCSBOrganizationForm({
             pattern: /^((true)|(false))$/g,
           })}
         >
+          <option value=""></option>
           <option value="true">true</option>
           <option value="false">false</option>
         </Form.Select>
         <Form.Control.Feedback type="invalid">
-          {errors.name?.message}
+          {errors.inactive?.message}
         </Form.Control.Feedback>
       </Form.Group>
 
