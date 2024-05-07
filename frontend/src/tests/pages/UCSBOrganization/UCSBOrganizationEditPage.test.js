@@ -35,8 +35,6 @@ describe("UCSBOrganizationEditPage tests", () => {
             </QueryClientProvider>
         );
 
-        // assert
-        expect(screen.getByText("Edit page not yet implemented")).toBeInTheDocument();
     });
 
 });

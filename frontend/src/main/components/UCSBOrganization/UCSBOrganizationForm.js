@@ -42,7 +42,9 @@ function UCSBOrganizationForm({
       </Form.Group>
 
       <Form.Group className="mb-3">
-        <Form.Label htmlFor="orgTranslation">Organization Translation</Form.Label>
+        <Form.Label htmlFor="orgTranslation">
+          Organization Translation
+        </Form.Label>
         <Form.Control
           data-testid={testIdPrefix + "-orgTranslation"}
           id="orgTranslation"
@@ -63,7 +65,7 @@ function UCSBOrganizationForm({
 
       <Form.Group className="mb-3">
         <Form.Label htmlFor="orgTranslationShort">
-         Organization Translation Short
+          Organization Translation Short
         </Form.Label>
         <Form.Control
           data-testid={testIdPrefix + "-orgTranslationShort"}
@@ -86,6 +88,7 @@ function UCSBOrganizationForm({
       <Form.Group className="mb-3">
         <Form.Label htmlFor="inactive">Inactive</Form.Label>
         <Form.Select
+          key={new Date().getTime()} //https://stackoverflow.com/questions/60446256/how-do-i-get-my-dropdown-in-react-to-update-without-having-to-refresh
           data-testid={testIdPrefix + "-inactive"}
           id="inactive"
           type="text"
