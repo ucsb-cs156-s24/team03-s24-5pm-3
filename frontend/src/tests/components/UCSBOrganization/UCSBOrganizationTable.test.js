@@ -84,6 +84,10 @@ describe("UserTable tests", () => {
     expect(screen.getByTestId(`${testId}-cell-row-0-col-orgCode`)).toHaveTextContent("ORG1");
     expect(screen.getByTestId(`${testId}-cell-row-1-col-orgCode`)).toHaveTextContent("ORG2");
 
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-inactive`)).toHaveTextContent("No");
+    expect(screen.getByTestId(`${testId}-cell-row-1-col-inactive`)).toHaveTextContent("Yes");
+
+
     const editButton = screen.getByTestId(`${testId}-cell-row-0-col-Edit-button`);
     expect(editButton).toBeInTheDocument();
     expect(editButton).toHaveClass("btn-primary");
@@ -161,6 +165,7 @@ describe("UserTable tests", () => {
       const header = screen.getByText(headerText);
       expect(header).toBeInTheDocument();
     });
+    expect(screen.queryByTestId("UCSBOrganizationTable-cell-row-0-col-orgCode")).not.toBeInTheDocument();
   });
 
 });

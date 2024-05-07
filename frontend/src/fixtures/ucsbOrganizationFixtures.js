@@ -17,7 +17,7 @@ const ucsbOrganizationFixtures = {
       orgCode: "ORG2",
       orgTranslationShort: "OG2",
       orgTranslation: "Organization 2",
-      inactive: false,
+      inactive: true,
     },
     {
       orgCode: "ISFA",
