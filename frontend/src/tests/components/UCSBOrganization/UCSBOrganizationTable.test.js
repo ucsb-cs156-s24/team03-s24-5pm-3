@@ -143,5 +143,25 @@ describe("UserTable tests", () => {
     fireEvent.click(deleteButton);
   });
 
+  test("Does not break with empty input", async () => {
+    // arrange
+    const currentUser = currentUserFixtures.adminUser;
+
+    // act - render the component
+    render(
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter>
+          <UCSBOrganizationTable currentUser={currentUser} />
+        </MemoryRouter>
+      </QueryClientProvider>
+    );
+
+    const expectedHeaders = ["Organization Code", "Organization Translation", "Organization Translation Short", "Inactive"];
+    expectedHeaders.forEach((headerText) => {
+      const header = screen.getByText(headerText);
+      expect(header).toBeInTheDocument();
+    });
+  });
+
 });
 
