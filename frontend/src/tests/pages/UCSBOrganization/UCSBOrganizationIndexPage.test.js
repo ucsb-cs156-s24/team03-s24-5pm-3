@@ -66,6 +66,27 @@ describe("UCSBOrganizationIndexPage tests", () => {
         expect(button).toHaveAttribute("style", "float: right;");
     });
 
+    test("Renders with Create Button for regular user", async () => {
+        setupUserOnly()
+        // arrange
+        const queryClient = new QueryClient();
+        axiosMock.onGet("/api/UCSBOrganization/all").reply(200, []);
+
+        // act
+        render(
+            <QueryClientProvider client={queryClient}>
+                <MemoryRouter>
+                    <UCSBOrganizationIndexPage />
+                </MemoryRouter>
+            </QueryClientProvider>
+        );
+
+        // assert
+        await waitFor( ()=>{
+            expect(screen.queryByText(/Create Organization/)).not.toBeInTheDocument();;
+        });
+    });
+
     test("renders three dates correctly for regular user", async () => {
         
         // arrange
