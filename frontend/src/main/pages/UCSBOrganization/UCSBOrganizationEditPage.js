@@ -40,7 +40,7 @@ export default function UCSBDatesEditPage({ storybook = false }) {
   });
 
   const onSuccess = (orgInit) => {
-    toast(`UCSBDate Updated - Organication Code: ${orgInit.orgCode}`);
+    toast(`UCSBOrganization Updated - Organization Code: ${orgInit.orgCode}`);
   };
 
   const mutation = useBackendMutation(
