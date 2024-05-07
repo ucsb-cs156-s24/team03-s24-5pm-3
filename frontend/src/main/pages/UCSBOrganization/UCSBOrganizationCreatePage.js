@@ -18,7 +18,7 @@ export default function RestaurantCreatePage({ storybook = false }) {
 
   const onSuccess = (UCSBOrganization) => {
     toast(
-      `New UCSBOrganization Created - orgCode: ${UCSBOrganization.orgCode}`
+      `New UCSBOrganization Created - Organization Code: ${UCSBOrganization.orgCode}`
     );
   };
 

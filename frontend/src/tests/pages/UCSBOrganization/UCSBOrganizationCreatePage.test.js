@@ -78,16 +78,16 @@ describe("UCSBOrganizationCreatePage tests", () => {
     );
 
     await waitFor(() => {
-      expect(screen.getByLabelText("OrgCode")).toBeInTheDocument();
+      expect(screen.getByLabelText("Organization Code")).toBeInTheDocument();
     });
 
-    const OrgCode = screen.getByLabelText("OrgCode");
+    const OrgCode = screen.getByLabelText("Organization Code");
     expect(OrgCode).toBeInTheDocument();
 
-    const OrgTranslation = screen.getByLabelText("OrgTranslation");
+    const OrgTranslation = screen.getByLabelText("Organization Translation");
     expect(OrgTranslation).toBeInTheDocument();
 
-    const OrgTranslationShort = screen.getByLabelText("OrgTranslationShort");
+    const OrgTranslationShort = screen.getByLabelText("Organization Translation Short");
     expect(OrgTranslationShort).toBeInTheDocument();
 
     const Inactive = screen.getByLabelText("Inactive");
@@ -114,7 +114,7 @@ describe("UCSBOrganizationCreatePage tests", () => {
 
     // assert - check that the toast was called with the expected message
     expect(mockToast).toBeCalledWith(
-      `New UCSBOrganization Created - orgCode: ${ucsborganization.orgCode}`
+      `New UCSBOrganization Created - Organization Code: ${ucsborganization.orgCode}`
     );
     expect(mockNavigate).toBeCalledWith({ to: "/ucsborganization" });
   });

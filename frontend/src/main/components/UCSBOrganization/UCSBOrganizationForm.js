@@ -22,14 +22,14 @@ function UCSBOrganizationForm({
   return (
     <Form onSubmit={handleSubmit(submitAction)}>
       <Form.Group className="mb-3">
-        <Form.Label htmlFor="orgCode">OrgCode</Form.Label>
+        <Form.Label htmlFor="orgCode">Organization Code</Form.Label>
         <Form.Control
           data-testid={testIdPrefix + "-orgCode"}
           id="orgCode"
           type="text"
           isInvalid={Boolean(errors.orgCode)}
           {...register("orgCode", {
-            required: "OrgCode is required.",
+            required: "Organization Code is required.",
             maxLength: {
               value: 30,
               message: "Max length 30 characters",
@@ -42,14 +42,14 @@ function UCSBOrganizationForm({
       </Form.Group>
 
       <Form.Group className="mb-3">
-        <Form.Label htmlFor="orgTranslation">OrgTranslation</Form.Label>
+        <Form.Label htmlFor="orgTranslation">Organization Translation</Form.Label>
         <Form.Control
           data-testid={testIdPrefix + "-orgTranslation"}
           id="orgTranslation"
           type="text"
           isInvalid={Boolean(errors.orgTranslation)}
           {...register("orgTranslation", {
-            required: "OrgTranslation is required.",
+            required: "Organization Translation is required.",
             maxLength: {
               value: 30,
               message: "Max length 30 characters",
@@ -63,7 +63,7 @@ function UCSBOrganizationForm({
 
       <Form.Group className="mb-3">
         <Form.Label htmlFor="orgTranslationShort">
-          OrgTranslationShort
+         Organization Translation Short
         </Form.Label>
         <Form.Control
           data-testid={testIdPrefix + "-orgTranslationShort"}
@@ -71,7 +71,7 @@ function UCSBOrganizationForm({
           type="text"
           isInvalid={Boolean(errors.orgTranslationShort)}
           {...register("orgTranslationShort", {
-            required: "OrgTranslationShort is required.",
+            required: "Organization Translation Short is required.",
             maxLength: {
               value: 30,
               message: "Max length 30 characters",

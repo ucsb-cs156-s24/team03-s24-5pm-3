@@ -17,9 +17,9 @@ describe("UCSBOrganizationForm tests", () => {
   const queryClient = new QueryClient();
 
   const expectedHeaders = [
-    "OrgCode",
-    "OrgTranslation",
-    "OrgTranslationShort",
+    "Organization Code",
+    "Organization Translation",
+    "Organization Translation Short",
     "Inactive",
   ];
   const testId = "UCSBOrganizationForm";
@@ -60,7 +60,7 @@ describe("UCSBOrganizationForm tests", () => {
     });
 
     expect(await screen.findByTestId(`${testId}-orgCode`)).toBeInTheDocument();
-    expect(screen.getByText(`OrgCode`)).toBeInTheDocument();
+    expect(screen.getByText(`Organization Code`)).toBeInTheDocument();
   });
 
   test("that navigate(-1) is called when Cancel is clicked", async () => {
@@ -93,9 +93,9 @@ describe("UCSBOrganizationForm tests", () => {
     fireEvent.click(submitButton);
     expect(submitButton).toBeInTheDocument();
 
-    await screen.findByText(/OrgCode is required/);
-    await screen.findByText(/OrgTranslation is required/);
-    await screen.findByText(/OrgTranslationShort is required/);
+    await screen.findByText(/Organization Code is required/);
+    await screen.findByText(/Organization Translation is required/);
+    await screen.findByText(/Organization Translation Short is required/);
     await screen.findByText(/Inactive is required/);
     // expect(screen.getByText(/Description is required/)).toBeInTheDocument();
     submitButton = screen.getByTestId(`${testId}-submit`);
@@ -112,7 +112,7 @@ describe("UCSBOrganizationForm tests", () => {
     fireEvent.click(submitButton);
 
     await waitFor(() => {
-      expect(screen.getByText(/OrgCode is required/)).toBeInTheDocument();
+      expect(screen.getByText(/Organization Code is required/)).toBeInTheDocument();
     });
 
     const orgTranslation = screen.getByTestId(`${testId}-orgTranslation`);
@@ -128,7 +128,7 @@ describe("UCSBOrganizationForm tests", () => {
 
     await waitFor(() => {
       expect(
-        screen.getByText(/OrgTranslation is required/)
+        screen.getByText(/Organization Translation is required/)
       ).toBeInTheDocument();
     });
 
@@ -149,7 +149,7 @@ describe("UCSBOrganizationForm tests", () => {
 
     await waitFor(() => {
       expect(
-        screen.getByText(/OrgTranslationShort is required/)
+        screen.getByText(/Organization Translation Short is required/)
       ).toBeInTheDocument();
     });
 
