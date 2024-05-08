@@ -61,7 +61,7 @@ describe("HelpRequestForm tests", () => {
         fireEvent.change(solved, { target: { value: 'bad-input' } });
         fireEvent.click(submitButton);
 
-        await screen.findByText(/Requester Email/);
+        await screen.findByText(/Requester Email must be in the format __@__.__, e.g. cgaucho@ucsb.edu/);
     });
 
     test("Correct Error messsages on missing input", async () => {
