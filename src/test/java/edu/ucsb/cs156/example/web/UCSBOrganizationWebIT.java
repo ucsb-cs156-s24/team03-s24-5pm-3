@@ -18,7 +18,7 @@ import edu.ucsb.cs156.example.WebTestCase;
 @DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)
 public class UCSBOrganizationWebIT extends WebTestCase {
     @Test
-    public void admin_user_can_create_edit_delete_restaurant() throws Exception {
+    public void admin_user_can_create_orgs() throws Exception {
         setupUser(true);
 
         page.getByText("UCSBOrganization").click();
@@ -37,7 +37,7 @@ public class UCSBOrganizationWebIT extends WebTestCase {
     }
 
     @Test
-    public void regular_user_cannot_create_restaurant() throws Exception {
+    public void regular_user_cannot_create_orgs() throws Exception {
         setupUser(false);
 
         page.getByText("UCSBOrganization").click();
