@@ -24,6 +24,7 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
 
     // Stryker disable next-line all
     const email_regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    //{errors.quarterYYYYQ?.type === 'pattern' && 'Requester Email must be in the format __@__.__, e.g. cgaucho@ucsb.edu'}
 
     return (
 
@@ -59,8 +60,8 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
                             {...register("requesterEmail", { required: true, pattern: email_regex })}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.quarterYYYYQ && 'Requester Email is required. '}
-                            {errors.quarterYYYYQ?.type === 'pattern' && 'Requester Email must be in the format YYYYQ, e.g. 20224 for Fall 2022'}
+                            {errors.requesterEmail && 'Requester Email is required.'}
+                            {errors.requesterEmail?.type === 'pattern' && 'Requester Email must be in the format __@__.__, e.g. cgaucho@ucsb.edu'}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
@@ -75,7 +76,7 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
                             {...register("teamId", { required: true })}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.teamId && 'Team ID is required. '}
+                            {errors.teamId && 'Team ID is required.'}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
@@ -90,7 +91,7 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
                             {...register("tableOrBreakoutRoom", { required: true })}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.tableOrBreakoutRoom && 'Table or Breakout Room is required. '}
+                            {errors.tableOrBreakoutRoom && 'Table or Breakout Room is required.'}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
@@ -105,7 +106,7 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
                             {...register("requestTime", { required: true, pattern: isodate_regex })}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.requestTime && 'RequestTime is required. '}
+                            {errors.requestTime && 'RequestTime is required.'}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
@@ -120,7 +121,7 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
                             {...register("explanation", { required: true })}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.explanation && 'Explanation is required. '}
+                            {errors.explanation && 'Explanation is required.'}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
