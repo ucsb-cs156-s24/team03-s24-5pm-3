@@ -1,4 +1,4 @@
-const ucsbDatesFixtures = {
+const menuItemReviewFixturesFixtures = {
   oneReview: {
     id: 1,
     itemID: 5,
