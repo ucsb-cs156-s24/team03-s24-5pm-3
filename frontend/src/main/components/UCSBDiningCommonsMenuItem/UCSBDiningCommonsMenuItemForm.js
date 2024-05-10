@@ -54,7 +54,7 @@ function UCSBDiningCommonsMenuItemForm({ initialContents, submitAction, buttonLa
                 <Form.Control.Feedback type="invalid">
                     {errors.diningCommonsCode?.message}
                 </Form.Control.Feedback>
-            </Form.Group>oneRestaurant
+            </Form.Group>oneDining
 
             <Form.Group className="mb-3" >
                 <Form.Label htmlFor="name">Name</Form.Label>

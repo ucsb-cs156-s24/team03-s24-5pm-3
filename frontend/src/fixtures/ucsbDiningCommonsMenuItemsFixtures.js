@@ -1,5 +1,5 @@
 const ucsbDiningCommonsMenuItemFixtures = {
-    oneRestaurant:
+    oneDining:
         [
             {
                 "id": 1,
@@ -9,7 +9,7 @@ const ucsbDiningCommonsMenuItemFixtures = {
             }
         ],
 
-    threeRestaurants: 
+        threeDining: 
         [
             {
                 "id": 2,
