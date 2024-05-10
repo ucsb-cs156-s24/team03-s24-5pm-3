@@ -60,7 +60,7 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
                         />
                         <Form.Control.Feedback type="invalid">
                             {errors.requesterEmail && 'Requester Email is required.'}
-                            {errors.requesterEmail?.type == 'pattern' && 'Requester Email must be in email format.'}
+                            {errors.requesterEmail?.type === 'pattern' && 'Requester Email must be in email format.'}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
@@ -76,7 +76,7 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
                         />
                         <Form.Control.Feedback type="invalid">
                             {errors.professorEmail && 'Professor Email is required.'}
-                            {errors.professorEmail?.type == 'pattern' && 'Professor Email must be in email format.'}
+                            {errors.professorEmail?.type === 'pattern' && 'Professor Email must be in email format.'}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
