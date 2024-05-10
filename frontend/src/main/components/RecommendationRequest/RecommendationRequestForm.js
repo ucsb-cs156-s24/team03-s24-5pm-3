@@ -23,7 +23,7 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
     const isodate_regex = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
 
     // Stryker disable next-line all
-    const yyyyq_regex = /((19)|(20))\d{2}[1-4]/i; // Accepts from 1900-2099 followed by 1-4.  Close enough.
+    const email_regex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;// Accepts from 1900-2099 followed by 1-4.  Close enough.
 
     return (
 
@@ -50,58 +50,45 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
 
                 <Col>
                     <Form.Group className="mb-3" >
-                        <Form.Label htmlFor="requesterEmail">RequesterEmail</Form.Label>
+                        <Form.Label htmlFor="requesterEmail">Requester Email</Form.Label>
                         <Form.Control
                             data-testid="RecommendationRequestForm-requesterEmail"
                             id="requesterEmail"
                             type="text"
-                            isInvalid={Boolean(errors.name)}
-                            {...register("requesterEmail", {
-                                required: "requesterEmail is required.",
-                                maxLength : {
-                                    value: 30,
-                                    message: "Max length 30 characters"
-                                }
-                            })}
+                            isInvalid={Boolean(errors.requesterEmail)}
+                            {...register("requesterEmail", { required: true, pattern: email_regex })}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.requesterEmail?.message}
+                            {errors.requesterEmail && 'Requester Email is required.'}
+                            {errors.requesterEmail?.type == 'pattern' && 'Requester Email must be in email format.'}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
                 <Col>
                     <Form.Group className="mb-3" >
-                        <Form.Label htmlFor="professorEmail">RequesterEmail</Form.Label>
+                        <Form.Label htmlFor="professorEmail">Professor Email</Form.Label>
                         <Form.Control
                             data-testid="RecommendationRequestForm-professorEmail"
                             id="professorEmail"
                             type="text"
-                            {...register("professorEmail", {
-                                required: "professorEmail is required.",
-                                maxLength : {
-                                    value: 30,
-                                    message: "Max length 30 characters"
-                                }
-                            })}
+                            isInvalid={Boolean(errors.professorEmail)}
+                            {...register("professorEmail", { required: true, pattern: email_regex })}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.professorEmail?.message}
+                            {errors.professorEmail && 'Professor Email is required.'}
+                            {errors.professorEmail?.type == 'pattern' && 'Professor Email must be in email format.'}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
                 <Col>
                     <Form.Group className="mb-3" >
-                        <Form.Label htmlFor="explanation">RequesterEmail</Form.Label>
+                        <Form.Label htmlFor="explanation">Explanation</Form.Label>
                         <Form.Control
                             data-testid="RecommendationRequestForm-explanation"
                             id="explanation"
                             type="text"
                             {...register("explanation", {
-                                required: "explanation is required.",
-                                maxLength : {
-                                    value: 50,
-                                    message: "Max length 50 characters"
-                                }
+                                required: "Explanation is required.",
                             })}
                         />
                         <Form.Control.Feedback type="invalid">
@@ -120,13 +107,13 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
                             {...register("dateRequested", { required: true, pattern: isodate_regex })}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.dateRequested && 'dateRequested is required. '}
+                            {errors.dateRequested && 'Date Requested must be in isodate format.'}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
                 <Col>
                     <Form.Group className="mb-3" >
-                        <Form.Label htmlFor="dateNeeded">Date Requested(iso format)</Form.Label>
+                        <Form.Label htmlFor="dateNeeded">Date Needed(iso format)</Form.Label>
                         <Form.Control
                             data-testid="RecommendationRequestForm-dateNeeded"
                             id="dateNeeded"
@@ -135,7 +122,7 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
                             {...register("dateNeeded", { required: true, pattern: isodate_regex })}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.dateNeeded && 'dateNeeded is required. '}
+                            {errors.dateNeeded && 'Date Needed must be in isodate format.'}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
@@ -144,12 +131,12 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
                         <Form.Label htmlFor="done">Done</Form.Label>
                         <Form.Select
                             key={new Date().getTime()} //https://stackoverflow.com/questions/60446256/how-do-i-get-my-dropdown-in-react-to-update-without-having-to-refresh
-                            data-testid={testIdPrefix + "-done"}
+                            data-testid="RecommendationRequestForm-done"
                             id="done"
                             type="text"
-                            isInvalid={Boolean(errors.inactive)}
+                            isInvalid={Boolean(errors.done)}
                             {...register("done", {
-                                required: "done is required.",
+                                required: "Done is required.",
                                 // pattern: /^((true)|(false))$/g,
                             })}
                             >

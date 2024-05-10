@@ -1,6 +1,5 @@
 const recommendationRequestFixtures = {
   oneRecommendationRequest:
-  [
     {
      "id": 1,
       "requesterEmail": "tmcanepa@ucsb.edu",
@@ -9,13 +8,12 @@ const recommendationRequestFixtures = {
       "dateRequested": "2022-01-02T12:00:00",
       "dateNeeded": "2022-01-03T12:00:00",
       "done": false,
-    }
-  ],
+    },
 
   threeRecommendationRequest:
   [
     {
-      "id": 2,
+      "id": 1,
        "requesterEmail": "canaya@ucsb.edu",
        "professorEmail": "phconrad@ucsb.edu",
        "explanation": "For Job Application",
@@ -25,17 +23,17 @@ const recommendationRequestFixtures = {
      },
 
      {
-      "id": 3,
+      "id": 2,
        "requesterEmail": "dlam@ucsb.edu",
        "professorEmail": "phconrad@ucsb.edu",
        "explanation": "For Job Application",
        "dateRequested": "2022-11-02T12:00:00",
        "dateNeeded": "2022-12-03T12:00:00",
-       "done": false,
+       "done": true,
      },
 
      {
-      "id": 4,
+      "id": 3,
        "requesterEmail": "bwalters@ucsb.edu",
        "professorEmail": "phconrad@ucsb.edu",
        "explanation": "For Job Application",
