@@ -59,7 +59,7 @@ describe("RecommendationRequestCreatePage tests", () => {
             professorEmail: "dce@ucsb.edu",
             explanation: "just cuz",
             dateRequested: "2022-02-02T00:00",
-            dateRequested: "2022-02-03T00:00",
+            dateNeeded: "2022-02-03T00:00",
             done: "true"
         };
 
