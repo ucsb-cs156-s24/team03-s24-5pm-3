@@ -290,7 +290,7 @@ public class UCSBDiningCommonsMenuItemControllerTests extends ControllerTestCase
                 verify(ucsbDiningCommonsMenuItemsRepository, times(1)).delete(any());
 
                 Map<String, Object> json = responseToJson(response);
-                assertEquals("UCSBDiningCommonsMenuItems with id 123 not found", json.get("message"));
+                assertEquals("UCSBDiningCommonsMenuItems with id 123 was deleted", json.get("message"));
         }
         
         @WithMockUser(roles = { "ADMIN", "USER" })

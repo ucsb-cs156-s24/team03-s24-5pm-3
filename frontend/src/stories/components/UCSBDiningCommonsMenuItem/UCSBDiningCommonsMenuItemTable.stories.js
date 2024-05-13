@@ -6,7 +6,7 @@ import { rest } from "msw";
 // import UCSBDiningCommonsMenuItemTable from 'main/components/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemTable';
 
 export default {
-    title: 'components/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemForm',
+    title: 'components/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemTable',
     component: UCSBDiningCommonsMenuItemTable
 };
 
