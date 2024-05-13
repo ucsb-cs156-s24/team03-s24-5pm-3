@@ -12,7 +12,7 @@ export default function UCSBDiningCommonsMenuItemCreatePage({storybook=false}) {
     params: {
       name: ucsbdiningcommonsmenuitem.name,
       station: ucsbdiningcommonsmenuitem.station,
-      code: ucsbdiningcommonsmenuitem.diningCommonsCode
+      diningCommonsCode: ucsbdiningcommonsmenuitem.diningCommonsCode
     }
   });
 
@@ -34,7 +34,7 @@ export default function UCSBDiningCommonsMenuItemCreatePage({storybook=false}) {
   }
 
   if (isSuccess && !storybook) {
-    return <Navigate to="/ucsbdiningcommonsmenuitem" />
+    return <Navigate to="/diningcommonsmenuitem" />
   }
 
   return (
