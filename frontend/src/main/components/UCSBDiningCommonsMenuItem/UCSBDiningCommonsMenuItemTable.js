@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 
 export default function UCSBDiningCommonsMenuItemTable({
-    UCSBDiningCommonsMenuItems,
+    UCSBDiningCommonsMenuItem,
     currentUser,
     testIdPrefix = "UCSBDiningCommonsMenuItemTable" }) {
 
@@ -55,7 +55,7 @@ export default function UCSBDiningCommonsMenuItemTable({
     } 
 
     return <OurTable
-        data={UCSBDiningCommonsMenuItems}
+        data={UCSBDiningCommonsMenuItem}
         columns={columns}
         testid={testIdPrefix}
     />;

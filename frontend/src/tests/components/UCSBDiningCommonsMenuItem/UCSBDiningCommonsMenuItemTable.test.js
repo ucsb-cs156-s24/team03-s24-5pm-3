@@ -16,8 +16,8 @@ jest.mock('react-router-dom', () => ({
 describe("UCSBDiningCommonsMenuItemTable tests", () => {
   const queryClient = new QueryClient();
 
-  const expectedHeaders = ["id", "Dining Commons Code", "Name", "Station"];
-  const expectedFields = ["id","diningCommonsCode", "name",  "station"];
+  const expectedHeaders = ["id", "Name", "Dining Commons Code", "Station"];
+  const expectedFields = ["id", "name", "diningCommonsCode", "station"];
   const testId = "UCSBDiningCommonsMenuItemTable";
 
   test("renders empty table correctly", () => {
@@ -29,7 +29,7 @@ describe("UCSBDiningCommonsMenuItemTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <UCSBDiningCommonsMenuItemTable UCSBDiningCommonsMenuItems={[]} currentUser={currentUser} />
+          <UCSBDiningCommonsMenuItemTable items={[]} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
     );
@@ -54,7 +54,7 @@ describe("UCSBDiningCommonsMenuItemTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <UCSBDiningCommonsMenuItemTable UCSBDiningCommonsMenuItems={ucsbDiningCommonsMenuItemFixtures.threeDining} currentUser={currentUser} />
+          <UCSBDiningCommonsMenuItemTable items={ucsbDiningCommonsMenuItemFixtures.threeDining} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
     );
@@ -94,7 +94,7 @@ describe("UCSBDiningCommonsMenuItemTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <UCSBDiningCommonsMenuItemTable UCSBDiningCommonsMenuItems={ucsbDiningCommonsMenuItemFixtures.threeDining} currentUser={currentUser} />
+          <UCSBDiningCommonsMenuItemTable items={ucsbDiningCommonsMenuItemFixtures.threeDining} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
     );
@@ -129,7 +129,7 @@ describe("UCSBDiningCommonsMenuItemTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <UCSBDiningCommonsMenuItemTable UCSBDiningCommonsMenuItems={ucsbDiningCommonsMenuItemFixtures.threeDining} currentUser={currentUser} />
+          <UCSBDiningCommonsMenuItemTable items={ucsbDiningCommonsMenuItemFixtures.threeDining} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
     );
@@ -157,7 +157,7 @@ describe("UCSBDiningCommonsMenuItemTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <UCSBDiningCommonsMenuItemTable UCSBDiningCommonsMenuItems={ucsbDiningCommonsMenuItemFixtures.threeDining} currentUser={currentUser} />
+          <UCSBDiningCommonsMenuItemTable items={ucsbDiningCommonsMenuItemFixtures.threeDining} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
     );
