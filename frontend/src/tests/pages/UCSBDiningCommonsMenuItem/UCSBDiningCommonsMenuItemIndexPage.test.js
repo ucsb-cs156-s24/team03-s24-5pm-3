@@ -50,7 +50,7 @@ describe("UCSBDiningCommonsMenuItemIndexPage tests", () => {
         render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
-                    <UCSBDiningCommonsMenuItemIndexPage/>
+                    <UCSBDiningCommonsMenuItemIndexPage />
                 </MemoryRouter>
             </QueryClientProvider>
         );
@@ -59,7 +59,7 @@ describe("UCSBDiningCommonsMenuItemIndexPage tests", () => {
             expect(screen.getByText(/Create UCSBDiningCommonsMenuItem/)).toBeInTheDocument();
         });
         const button = screen.getByText(/Create UCSBDiningCommonsMenuItem/);
-        expect(button).toHaveAttribute("href", "/ucsbDiningCommonsMenuItems/create");
+        expect(button).toHaveAttribute("href", "/diningcommonsmenuitem/create");
         expect(button).toHaveAttribute("style", "float: right;");
     });
 
@@ -79,16 +79,16 @@ describe("UCSBDiningCommonsMenuItemIndexPage tests", () => {
         expect(screen.getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent("3");
         expect(screen.getByTestId(`${testId}-cell-row-2-col-id`)).toHaveTextContent("4");
 
-        const createUCSBDiningCommonsMenuItemButton  = screen.queryByText("Create UCSBDiningCommonsMenuItem");
-        expect(createUCSBDiningCommonsMenuItemButton ).not.toBeInTheDocument();
+        const createUCSBDiningCommonsMenuItemButton = screen.queryByText("Create UCSBDiningCommonsMenuItem");
+        expect(createUCSBDiningCommonsMenuItemButton).not.toBeInTheDocument();
 
-        const name = screen.getByText("DLG");
+        const name = screen.getByText("Taco");
         expect(name).toBeInTheDocument();
 
         const station = screen.getByText("PORT");
         expect(station).toBeInTheDocument();
 
-        const code = screen.getByText("DLG");
+        const code = screen.getByText("Station 3");
         expect(code).toBeInTheDocument();
 
 
@@ -113,7 +113,7 @@ describe("UCSBDiningCommonsMenuItemIndexPage tests", () => {
         );
 
         await waitFor(() => { expect(axiosMock.history.get.length).toBeGreaterThanOrEqual(1); });
-        
+
         const errorMessage = console.error.mock.calls[0][0];
         expect(errorMessage).toMatch("Error communicating with backend via GET on /api/ucsbDiningCommonsMenuItems/all");
         restoreConsole();
@@ -145,7 +145,7 @@ describe("UCSBDiningCommonsMenuItemIndexPage tests", () => {
 
         fireEvent.click(deleteButton);
 
-        await waitFor(() => { expect(mockToast).toBeCalledWith("UCSBDiningCommons with id 1 deleted") });
+        await waitFor(() => { expect(mockToast).toBeCalledWith("UCSBDiningCommonsMenuItem with id 1 was deleted") });
 
         await waitFor(() => { expect(axiosMock.history.delete.length).toBe(1); });
         expect(axiosMock.history.delete[0].url).toBe("/api/ucsbDiningCommonsMenuItems");

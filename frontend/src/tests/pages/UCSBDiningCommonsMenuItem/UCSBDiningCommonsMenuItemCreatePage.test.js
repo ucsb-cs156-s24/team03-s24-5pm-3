@@ -92,14 +92,14 @@ describe("UCSBDiningCommonsMenuItemCreatePage tests", () => {
         await waitFor(() => expect(axiosMock.history.post.length).toBe(1));
 
         expect(axiosMock.history.post[0].params).toEqual({
-            code: "PORT",
+            diningCommonsCode: "PORT",
             name: "Taco",
             station: "Station 3"
         });
 
         // assert - check that the toast was called with the expected message
         expect(mockToast).toBeCalledWith("New restaurant Created - id: 3 name: Taco");
-        expect(mockNavigate).toBeCalledWith({ "to": "/ucsbdiningcommonsmenuitem" });
+        expect(mockNavigate).toBeCalledWith({ "to": "/diningcommonsmenuitem" });
 
     });
 });
