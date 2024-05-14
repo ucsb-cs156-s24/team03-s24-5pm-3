@@ -32,7 +32,7 @@ export default function UCSBDatesEditPage({ storybook = false }) {
   });
 
   const onSuccess = (ucsbDate) => {
-    toast(`UCSBDate Updated - id: ${ucsbDate.id} name: ${ucsbDate.name}`);
+    toast(`MenuItemReview Updated - id: ${ucsbDate.id}`);
   }
 
   const mutation = useBackendMutation(
@@ -55,7 +55,7 @@ export default function UCSBDatesEditPage({ storybook = false }) {
   return (
     <BasicLayout>
       <div className="pt-2">
-        <h1>Edit UCSBDate</h1>
+        <h1>Edit MenuItemReview</h1>
         {
           ucsbDate && <MenuItemReviewForm initialContents={ucsbDate} submitAction={onSubmit} buttonLabel="Update" />
         }

@@ -18,7 +18,7 @@ export default function UCSBDatesIndexPage() {
                 href="/menuitemreview/create"
                 style={{ float: "right" }}
             >
-                Create UCSBDate 
+                Create MenuItemReview 
             </Button>
         )
     } 
