@@ -2,7 +2,7 @@
 import React from 'react';
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
-import { HelpRequestFixtures } from "fixtures/HelpRequestFixtures";
+import { helpRequestFixtures } from "fixtures/helpRequestFixtures";
 import { rest } from "msw";
 
 import HelpRequestIndexPage from "main/pages/HelpRequest/HelpRequestIndexPage";
@@ -40,7 +40,7 @@ ThreeItemsOrdinaryUser.parameters = {
             return res(ctx.json(systemInfoFixtures.showingNeither));
         }),
         rest.get('/api/helprequests/all', (_req, res, ctx) => {
-            return res(ctx.json(HelpRequestFixtures.threeDates));
+            return res(ctx.json(helpRequestFixtures.threeDates));
         }),
     ],
 }
@@ -56,7 +56,7 @@ ThreeItemsAdminUser.parameters = {
             return res(ctx.json(systemInfoFixtures.showingNeither));
         }),
         rest.get('/api/helprequests/all', (_req, res, ctx) => {
-            return res(ctx.json(HelpRequestFixtures.threeRequests));
+            return res(ctx.json(helpRequestFixtures.threeRequests));
         }),
         rest.delete('/api/helprequests', (req, res, ctx) => {
             window.alert("DELETE: " + JSON.stringify(req.url));
