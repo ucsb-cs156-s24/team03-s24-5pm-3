@@ -112,7 +112,6 @@ describe("HelpRequestCreatePage tests", () => {
         expect(mockNavigate).toBeCalledWith({ "to": "/helprequests" });
     });
 
-
 });
 
 

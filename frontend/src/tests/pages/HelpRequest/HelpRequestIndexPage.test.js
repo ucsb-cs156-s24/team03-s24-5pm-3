@@ -34,7 +34,6 @@ describe("PlaceholderIndexPage tests", () => {
         axiosMock.onGet("/api/currentUser").reply(200, apiCurrentUserFixtures.userOnly);
         axiosMock.onGet("/api/systemInfo").reply(200, systemInfoFixtures.showingNeither);
     };
-
     const setupAdminUser = () => {
         axiosMock.reset();
         axiosMock.resetHistory();
