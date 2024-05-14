@@ -46,7 +46,7 @@ describe("MenuItemReviewIndexPage tests", () => {
         // arrange
         setupAdminUser();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/ucsbdates/all").reply(200, []);
+        axiosMock.onGet("/api/menuitemreview/all").reply(200, []);
 
         // act
         render(
@@ -88,7 +88,7 @@ describe("MenuItemReviewIndexPage tests", () => {
         expect(screen.getByTestId(`${testId}-cell-row-2-col-id`)).toHaveTextContent("3");
 
         // assert that the Create button is not present when user isn't an admin
-        expect(screen.queryByText(/Create UCSBDate/)).not.toBeInTheDocument();
+        expect(screen.queryByText(/Create MenuItemReview/)).not.toBeInTheDocument();
 
     });
 
