@@ -23,4 +23,4 @@ repo_name: "TBD"
 repo: ucsb-cs156-s24/team03-s24-5pm-3
 owner: ucsb-cs156-s24
 repo_name: team03-s24-5pm-3
-pull_requests: [{"author":{"id":"U_kgDOBXy3rA","is_bot":false,"login":"andrew-kwon1","name":""},"headRefName":"ak-helprequest-placeholders","number":91,"title":"Placeholders for Help Request Pages","url":"https://github.com/ucsb-cs156-s24/team03-s24-5pm-3/pull/91"},{"author":{"id":"MDQ6VXNlcjQzNzgzODc3","is_bot":false,"login":"yuxiaolejs","name":"Unics Yu"},"headRefName":"Tianle-Test","number":78,"title":"[h05] [do NOT merge] Integration / E2E tests for h05","url":"https://github.com/ucsb-cs156-s24/team03-s24-5pm-3/pull/78"}]
+pull_requests: [{"author":{"id":"MDQ6VXNlcjQzNzgzODc3","is_bot":false,"login":"yuxiaolejs","name":"Unics Yu"},"headRefName":"Tianle-Test","number":78,"title":"[h05] [do NOT merge] Integration / E2E tests for h05","url":"https://github.com/ucsb-cs156-s24/team03-s24-5pm-3/pull/78"}]
