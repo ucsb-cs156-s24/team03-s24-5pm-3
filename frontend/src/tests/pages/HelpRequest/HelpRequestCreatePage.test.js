@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, waitFor, fireEvent, screen } from "@testing-library/react";
 import HelpRequestCreatePage from "main/pages/HelpRequest/HelpRequestCreatePage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
@@ -83,7 +83,7 @@ describe("HelpRequestCreatePage tests", () => {
         const requestTimeField = screen.getByTestId("HelpRequestForm-requestTime");
         const explanationField = screen.getByTestId("HelpRequestForm-explanation");
         const solvedField = screen.getByTestId("HelpRequestForm-solved");
-        const submitButton = screen.getByTestId("UCSBDateForm-submit");
+        const submitButton = screen.getByTestId("HelpRequestForm-submit");
 
         fireEvent.change(requesterEmailField, { target: { value: 'cgaucho@ucsb.edu' } });
         fireEvent.change(teamIdField, { target: { value: 's24-4pm-3' } });
@@ -108,7 +108,7 @@ describe("HelpRequestCreatePage tests", () => {
             "solved": "true"
         });
 
-        expect(mockToast).toBeCalledWith("New HelpRequest Created - id: 1 requesterEmail: cgauch@ucsb.edu");
+        expect(mockToast).toBeCalledWith("New HelpRequest Created - id: 1 requesterEmail: cgaucho@ucsb.edu");
         expect(mockNavigate).toBeCalledWith({ "to": "/helprequests" });
     });
 

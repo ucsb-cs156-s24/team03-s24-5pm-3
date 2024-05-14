@@ -16,13 +16,13 @@ export default function HelpRequestIndexPage() {
                 href="/helprequests/create"
                 style={{ float: "right" }}
             >
-                Create UCSBDate 
+                Create HelpRequest
             </Button>
         )
     } 
   }
   
-  const { data: dates, error: _error, status: _status } =
+  const { data: requests, error: _error, status: _status } =
     useBackend(
       // Stryker disable next-line all : don't test internal caching of React Query
       ["/api/helprequests/all"],

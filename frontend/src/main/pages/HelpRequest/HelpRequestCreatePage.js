@@ -20,7 +20,7 @@ export default function HelpRequestCreatePage({storybook=false}) {
   });
 
   const onSuccess = (helprequests) => {
-    toast(`New ucsbDate Created - id: ${helprequests.id} name: ${helprequests.name}`);
+    toast(`New HelpRequest Created - id: ${helprequests.id} requesterEmail: ${helprequests.requesterEmail}`);
   }
 
   const mutation = useBackendMutation(
