@@ -23,10 +23,10 @@ Default.parameters = {
         rest.get('/api/systemInfo', (_req, res, ctx) => {
             return res(ctx.json(systemInfoFixtures.showingNeither));
         }),
-        rest.get('/api/ucsbdates', (_req, res, ctx) => {
+        rest.get('/api/menuitemreview', (_req, res, ctx) => {
             return res(ctx.json(ucsbDatesFixtures.threeDates[0]));
         }),
-        rest.put('/api/ucsbdates', async (req, res, ctx) => {
+        rest.put('/api/menuitemreview', async (req, res, ctx) => {
             var reqBody = await req.text();
             window.alert("PUT: " + req.url + " and body: " + reqBody);
             return res(ctx.status(200),ctx.json({}));
