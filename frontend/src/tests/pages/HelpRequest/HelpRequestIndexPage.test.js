@@ -6,7 +6,7 @@ import HelpRequestIndexPage from "main/pages/HelpRequest/HelpRequestIndexPage";
 
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
-import { HelpRequestFixtures } from "fixtures/HelpRequestFixtures";
+import { helpRequestFixtures } from "fixtures/helpRequestFixtures";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
 import mockConsole from "jest-mock-console";
@@ -60,9 +60,9 @@ describe("PlaceholderIndexPage tests", () => {
 
         // assert
         await waitFor( ()=>{
-            expect(screen.getByText(/Create Help Request/)).toBeInTheDocument();
+            expect(screen.getByText(/Create HelpRequest/)).toBeInTheDocument();
         });
-        const button = screen.getByText(/Create Help Request/);
+        const button = screen.getByText(/Create HelpRequest/);
         expect(button).toHaveAttribute("href", "/helprequests/create");
         expect(button).toHaveAttribute("style", "float: right;");
     });
@@ -72,7 +72,7 @@ describe("PlaceholderIndexPage tests", () => {
         // arrange
         setupUserOnly();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/helprequests/all").reply(200, HelpRequestsFixtures.threeRequests);
+        axiosMock.onGet("/api/helprequests/all").reply(200, helpRequestFixtures.threeRequests);
 
         // act
         render(
@@ -89,7 +89,7 @@ describe("PlaceholderIndexPage tests", () => {
         expect(screen.getByTestId(`${testId}-cell-row-2-col-id`)).toHaveTextContent("3");
 
         // assert that the Create button is not present when user isn't an admin
-        expect(screen.queryByText(/Create Help Request/)).not.toBeInTheDocument();
+        expect(screen.queryByText(/Create HelpRequest/)).not.toBeInTheDocument();
 
     });
 
@@ -124,7 +124,7 @@ describe("PlaceholderIndexPage tests", () => {
         // arrange
         setupAdminUser();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/helprequests/all").reply(200, HelpRequestFixtures.threeRequests);
+        axiosMock.onGet("/api/helprequests/all").reply(200, helpRequestFixtures.threeRequests);
         axiosMock.onDelete("/api/helprequests").reply(200, "Help Request with id 1 was deleted");
 
         // act
@@ -148,7 +148,7 @@ describe("PlaceholderIndexPage tests", () => {
         fireEvent.click(deleteButton);
 
         // assert
-        await waitFor(() => { expect(mockToast).toBeCalledWith("Help Requestwith id 1 was deleted") });
+        await waitFor(() => { expect(mockToast).toBeCalledWith("Help Request with id 1 was deleted") });
 
     });
 

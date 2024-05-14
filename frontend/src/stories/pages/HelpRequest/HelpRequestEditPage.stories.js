@@ -1,7 +1,7 @@
 import React from 'react';
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
-import { HelpRequestFixtures } from "fixtures/HelpRequestFixtures";
+import { helpRequestFixtures } from "fixtures/helpRequestFixtures";
 import { rest } from "msw";
 
 import HelpRequestEditPage from "main/pages/HelpRequest/HelpRequestEditPage";
@@ -23,7 +23,7 @@ Default.parameters = {
             return res(ctx.json(systemInfoFixtures.showingNeither));
         }),
         rest.get('/api/helprequests', (_req, res, ctx) => {
-            return res(ctx.json(HelpRequestFixtures.threeRequests[0]));
+            return res(ctx.json(helpRequestFixtures.threeRequests[0]));
         }),
         rest.put('/api/helprequests', async (req, res, ctx) => {
             var reqBody = await req.text();
