@@ -15,7 +15,7 @@ jest.mock('react-router-dom', () => ({
 
 describe("UserTable tests", () => {
   const queryClient = new QueryClient();
-  const expectedHeaders = ["id", "RequesterEmail", "TeamId", "TableOrBreakoutRoom", "Explanation", "RequestTime", "solved"];
+  const expectedHeaders = ["id", "RequesterEmail", "TeamId", "TableOrBreakoutRoom", "Explanation", "RequestTime", "Solved"];
   const expectedFields = ["id", "requesterEmail", "teamId", "tableOrBreakoutRoom", "explanation", "requestTime", "solved"];
   const testId = "HelpRequestTable";
 
@@ -160,6 +160,8 @@ describe("UserTable tests", () => {
     // assert - check that the expected content is rendered
     expect(await screen.findByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("1");
     expect(screen.getByTestId(`${testId}-cell-row-0-col-requesterEmail`)).toHaveTextContent("cgaucho@ucsb.edu");
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-explanation`)).toHaveTextContent("HelpRequestFixtures");
+    expect(screen.getByTestId(`${testId}-cell-row-0-col-solved`)).toHaveTextContent("true");
 
     const deleteButton = screen.getByTestId(`${testId}-cell-row-0-col-Delete-button`);
     expect(deleteButton).toBeInTheDocument();
