@@ -6,14 +6,14 @@ import { toast } from "react-toastify";
 
 export default function MenuItemReviewCreatePage({storybook=false}) {
 
-  const objectToAxiosParams = (ucsbDate) => ({
+  const objectToAxiosParams = (menuitemreview) => ({
     url: "/api/menuitemreview/post",
     method: "POST",
-    params: ucsbDate
+    params: menuitemreview
   });
 
-  const onSuccess = (ucsbDate) => {
-    toast(`New MenuItemReview Created - id: ${ucsbDate.id}`);
+  const onSuccess = (menuitemreview) => {
+    toast(`New MenuItemReview Created - id: ${menuitemreview.id}`);
   }
 
   const mutation = useBackendMutation(

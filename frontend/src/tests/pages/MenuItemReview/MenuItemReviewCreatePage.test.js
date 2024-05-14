@@ -53,14 +53,16 @@ describe("MenuItemReviewCreatePage tests", () => {
     test("when you fill in the form and hit submit, it makes a request to the backend", async () => {
 
         const queryClient = new QueryClient();
-        const ucsbDate = {
+        const menuItemReview = {
             id: 17,
-            quarterYYYYQField: 20221,
-            name: "Groundhog Day",
-            localDateTime: "2022-02-02T00:00"
+            comments: "Test",
+            dateReviewed: "2022-02-02T00:00",
+            itemID: "2",
+            reviewerEmail: "tester@gmail.com",
+            stars: "5"
         };
 
-        axiosMock.onPost("/api/menuitemreview/post").reply(202, ucsbDate);
+        axiosMock.onPost("/api/menuitemreview/post").reply(202, menuItemReview);
 
         render(
             <QueryClientProvider client={queryClient}>
