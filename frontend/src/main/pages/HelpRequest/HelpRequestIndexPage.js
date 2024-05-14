@@ -27,6 +27,7 @@ export default function HelpRequestIndexPage() {
       // Stryker disable next-line all : don't test internal caching of React Query
       ["/api/helprequests/all"],
       { method: "GET", url: "/api/helprequests/all" },
+      // Stryker disable next-line all : don't test default value of empty list
       []
     );
 
