@@ -2,7 +2,7 @@
 import React from 'react';
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
-import { ucsbDatesFixtures } from "fixtures/ucsbDatesFixtures";
+import { menuItemReviewFixtures } from "fixtures/menuItemReviewFixtures";
 import { rest } from "msw";
 
 import MenuItemReviewEditPage from "main/pages/MenuItemReview/MenuItemReviewEditPage";
@@ -24,7 +24,7 @@ Default.parameters = {
             return res(ctx.json(systemInfoFixtures.showingNeither));
         }),
         rest.get('/api/menuitemreview', (_req, res, ctx) => {
-            return res(ctx.json(ucsbDatesFixtures.threeDates[0]));
+            return res(ctx.json(menuItemReviewFixtures.threeDates[0]));
         }),
         rest.put('/api/menuitemreview', async (req, res, ctx) => {
             var reqBody = await req.text();
