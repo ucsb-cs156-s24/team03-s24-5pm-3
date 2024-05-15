@@ -1,39 +1,42 @@
 import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
 import { useParams } from "react-router-dom";
 import MenuItemReviewForm from "main/components/MenuItemReview/MenuItemReviewForm";
-import { Navigate } from 'react-router-dom'
+import { Navigate } from "react-router-dom";
 import { useBackend, useBackendMutation } from "main/utils/useBackend";
 import { toast } from "react-toastify";
 
-export default function UCSBDatesEditPage({ storybook = false }) {
+export default function MenuItemReviewEditPage({ storybook = false }) {
   let { id } = useParams();
 
-  const { data: ucsbDate, _error, _status } =
-    useBackend(
-      // Stryker disable next-line all : don't test internal caching of React Query
-      [`/api/menuitemreview?id=${id}`],
-      {  // Stryker disable next-line all : GET is the default, so changing this to "" doesn't introduce a bug
-        method: "GET",
-        url: `/api/menuitemreview`,
-        params: {
-          id
-        }
-      }
-    );
+  const {
+    data: menuitemreview,
+    _error,
+    _status,
+  } = useBackend(
+    // Stryker disable next-line all : don't test internal caching of React Query
+    [`/api/menuitemreview?id=${id}`],
+    {
+      // Stryker disable next-line all : GET is the default, so changing this to "" doesn't introduce a bug
+      method: "GET",
+      url: `/api/menuitemreview`,
+      params: {
+        id,
+      },
+    }
+  );
 
-
-  const objectToAxiosPutParams = (ucsbDate) => ({
+  const objectToAxiosPutParams = (menuitemreview) => ({
     url: "/api/menuitemreview",
     method: "PUT",
     params: {
-      id: ucsbDate.id,
+      id: menuitemreview.id,
     },
-    data: ucsbDate
+    data: menuitemreview,
   });
 
-  const onSuccess = (ucsbDate) => {
-    toast(`MenuItemReview Updated - id: ${ucsbDate.id}`);
-  }
+  const onSuccess = (menuitemreview) => {
+    toast(`MenuItemReview Updated - id: ${menuitemreview.id}`);
+  };
 
   const mutation = useBackendMutation(
     objectToAxiosPutParams,
@@ -42,25 +45,28 @@ export default function UCSBDatesEditPage({ storybook = false }) {
     [`/api/menuitemreview?id=${id}`]
   );
 
-  const { isSuccess } = mutation
+  const { isSuccess } = mutation;
 
   const onSubmit = async (data) => {
     mutation.mutate(data);
-  }
+  };
 
   if (isSuccess && !storybook) {
-    return <Navigate to="/menuitemreview" />
+    return <Navigate to="/menuitemreview" />;
   }
 
   return (
     <BasicLayout>
       <div className="pt-2">
         <h1>Edit MenuItemReview</h1>
-        {
-          ucsbDate && <MenuItemReviewForm initialContents={ucsbDate} submitAction={onSubmit} buttonLabel="Update" />
-        }
+        {menuitemreview && (
+          <MenuItemReviewForm
+            initialContents={menuitemreview}
+            submitAction={onSubmit}
+            buttonLabel="Update"
+          />
+        )}
       </div>
     </BasicLayout>
-  )
+  );
 }
-
