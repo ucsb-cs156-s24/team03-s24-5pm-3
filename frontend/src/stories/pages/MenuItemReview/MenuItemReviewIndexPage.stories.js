@@ -2,10 +2,11 @@
 import React from 'react';
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
-import { ucsbDatesFixtures } from "fixtures/ucsbDatesFixtures";
+import { menuItemReviewFixtures } from "fixtures/menuItemReviewFixtures";
 import { rest } from "msw";
 
 import MenuItemReviewIndexPage from "main/pages/MenuItemReview/MenuItemReviewIndexPage";
+
 
 export default {
     title: 'pages/MenuItemReview/MenuItemReviewIndexPage',
@@ -25,7 +26,7 @@ Empty.parameters = {
         }),
         rest.get('/api/menuitemreview/all', (_req, res, ctx) => {
             return res(ctx.json([]));
-        }),
+        })
     ]
 }
 
@@ -40,7 +41,7 @@ ThreeItemsOrdinaryUser.parameters = {
             return res(ctx.json(systemInfoFixtures.showingNeither));
         }),
         rest.get('/api/menuitemreview/all', (_req, res, ctx) => {
-            return res(ctx.json(ucsbDatesFixtures.threeDates));
+            return res(ctx.json(menuItemReviewFixtures.threeDates));
         }),
     ],
 }
@@ -56,7 +57,7 @@ ThreeItemsAdminUser.parameters = {
             return res(ctx.json(systemInfoFixtures.showingNeither));
         }),
         rest.get('/api/menuitemreview/all', (_req, res, ctx) => {
-            return res(ctx.json(ucsbDatesFixtures.threeDates));
+            return res(ctx.json(menuItemReviewFixtures.threeDates));
         }),
         rest.delete('/api/menuitemreview', (req, res, ctx) => {
             window.alert("DELETE: " + JSON.stringify(req.url));
