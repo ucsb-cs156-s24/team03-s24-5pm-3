@@ -28,21 +28,21 @@ public class RecommendationRequestWebIT extends WebTestCase {
         page.getByTestId("RecommendationRequestForm-requesterEmail").fill("me@gmail.com");
         page.getByTestId("RecommendationRequestForm-professorEmail").fill("you@gmail.com");
         page.getByTestId("RecommendationRequestForm-explanation").fill("I need a recommendation");
-        page.getByTestId("RecommendationRequestForm-dateRequested").fill("2022-01-01T00:00:00");
-        page.getByTestId("RecommendationRequestForm-dateNeeded").fill("2022-01-02T00:00:00");
+        page.getByTestId("RecommendationRequestForm-dateRequested").fill("2022-01-04T00:00");
+        page.getByTestId("RecommendationRequestForm-dateNeeded").fill("2022-01-02T00:00");
         page.getByTestId("RecommendationRequestForm-done").selectOption("true");
         page.getByTestId("RecommendationRequestForm-submit").click();
 
         assertThat(page.getByTestId("RecommendationRequestTable-cell-row-0-col-requesterEmail"))
-                .hasText("me2@gmail.com");
+                .hasText("me@gmail.com");
         
         page.getByTestId("RecommendationRequestTable-cell-row-0-col-Edit-button").click();
-        assertThat(page.getByText("Edit RecommendationRequest")).isVisible();
-        page.getByTestId("RecommendationRequestForm-requesterEmail").fill("me2@gmail.com");
+        assertThat(page.getByText("Edit Recommendation Request")).isVisible();
+        page.getByTestId("RecommendationRequestForm-requesterEmail").fill("me@gmail.com");
         page.getByTestId("RecommendationRequestForm-submit").click();
 
         assertThat(page.getByTestId("RecommendationRequestTable-cell-row-0-col-requesterEmail"))
-                .hasText("me2@gmail.com");
+                .hasText("me@gmail.com");
         
         page.getByTestId("RecommendationRequestTable-cell-row-0-col-Delete-button").click();
 
