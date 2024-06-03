@@ -33,9 +33,9 @@ public class UCSBDCMIWebIT extends WebTestCase {
                 .hasText("station 1");
 
         page.getByTestId("UCSBDiningCommonsMenuItemTable-cell-row-0-col-Edit-button").click();
-        assertThat(page.getByText("Edit Menu Item")).isVisible();
-        page.getByTestId("UCSBDiningCommonsMenuItemTable-station").fill("Station 3");
-        page.getByTestId("UCSBDiningCommonsMenuItemTable-submit").click();
+        assertThat(page.getByText("Edit UCSBDiningCommonsMenuItem")).isVisible();
+        page.getByTestId("UCSBDiningCommonsMenuItemForm-station").fill("Station 3");
+        page.getByTestId("UCSBDiningCommonsMenuItemForm-submit").click();
 
         assertThat(page.getByTestId("UCSBDiningCommonsMenuItemTable-cell-row-0-col-station")).hasText("Station 3");
 
