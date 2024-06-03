@@ -44,7 +44,7 @@ public class UCSBDCMIIT {
         public GrantedAuthoritiesService grantedAuthoritiesService;
 
         @Autowired
-        UCSBDiningCommonsMenuItemsRepository diningCommonsMenuItemsRepository;
+        UCSBDiningCommonsMenuItemsRepository ucsbDiningCommonsMenuItemsRepository;
 
         @Autowired
         public MockMvc mockMvc;
@@ -66,7 +66,7 @@ public class UCSBDCMIIT {
                             .station("station 1")
                             .build();
                                 
-                            diningCommonsMenuItemsRepository.save(diningCommonsMenuItems);
+                            ucsbDiningCommonsMenuItemsRepository.save(diningCommonsMenuItems);
 
                 // act
                 MvcResult response = mockMvc.perform(get("/api/ucsbDiningCommonsMenuItems?id=1"))
@@ -90,7 +90,7 @@ public class UCSBDCMIIT {
                 .station("station")
                 .build();
 
-                diningCommonsMenuItemsRepository.save(diningCommonsMenuItems1);
+                ucsbDiningCommonsMenuItemsRepository.save(diningCommonsMenuItems1);
 
                 // act
                 MvcResult response = mockMvc.perform(

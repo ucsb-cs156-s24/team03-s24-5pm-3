@@ -48,7 +48,7 @@ public class UCSBDCMIWebIT extends WebTestCase {
     public void regular_user_cannot_create_ucsbdiningcommons() throws Exception {
         setupUser(false);
 
-        page.getByText("UCSBDiningCommonsMenuItemForm").click();
+        page.getByText("Menu Item").click();//Form 
 
         assertThat(page.getByText("Create UCSBDiningCommonsMenuItem")).not().isVisible();
         assertThat(page.getByTestId("UCSBDiningCommonsMenuItemTable-cell-row-0-col-name")).not().isVisible();
