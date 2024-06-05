@@ -32,8 +32,6 @@ import edu.ucsb.cs156.example.repositories.UserRepository;
 import edu.ucsb.cs156.example.services.CurrentUserService;
 import edu.ucsb.cs156.example.services.GrantedAuthoritiesService;
 import edu.ucsb.cs156.example.testconfig.TestConfig;
-import static org.hamcrest.Matchers.is;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -60,40 +58,6 @@ public class MenuItemReviewIT {
         @MockBean
         UserRepository userRepository;
 
-        // @WithMockUser(roles = { "ADMIN", "USER" })
-        // @Test
-        // public void an_admin_user_can_post_a_new_menu_item_review() throws Exception {
-        //         // arrange
-
-        //         LocalDateTime ldt2 = LocalDateTime.parse("2022-01-03T00:00:00");
-
-
-        //         MenuItemReview menuItemReview1 = MenuItemReview.builder()
-        //                         .itemID(1)
-        //                         .reviewerEmail("test")
-        //                         .stars(5)
-        //                         .dateReviewed(ldt2)
-        //                         .comments("good")
-        //                         .build();
-
-        //         // act
-        //         MvcResult response = mockMvc.perform(
-        //                 post("/api/menuitemreview/post")
-        //                 .param("itemID", "1")
-        //                 .param("reviewerEmail", "test")
-        //                 .param("stars", "5")
-        //                 .param("dateReviewed", "2022-01-03T00:00:00")
-        //                 .param("comments", "good")
-        //                 .with(csrf()))
-        //                 .andExpect(status().isOk()).andReturn();
-        //         // assert
-        //         System.out.println(response.getResponse().getContentAsString());
-        //         System.out.println(response.getResolvedException());   
-        //         String expectedJson = mapper.writeValueAsString(menuItemReview1);
-        //         String responseString = response.getResponse().getContentAsString();
-        //         assertEquals(expectedJson, responseString);
-        // }
-
         @WithMockUser(roles = { "USER" })
         @Test
         public void test_that_logged_in_user_can_get_by_id_when_the_id_exists() throws Exception {
@@ -115,6 +79,40 @@ public class MenuItemReviewIT {
                 MvcResult response = mockMvc.perform(get("/api/menuitemreview?id=1"))
                                 .andExpect(status().isOk()).andReturn();
 
+                // assert
+                String expectedJson = mapper.writeValueAsString(menuItemReview);
+                String responseString = response.getResponse().getContentAsString();
+                assertEquals(expectedJson, responseString);
+        }
+
+        @WithMockUser(roles = { "ADMIN", "USER" })
+        @Test
+        public void an_admin_user_can_post_a_new_menu_item_review() throws Exception {
+                // arrange
+
+                LocalDateTime ldt2 = LocalDateTime.parse("2023-01-03T00:00:00");
+
+
+                MenuItemReview menuItemReview = MenuItemReview.builder()
+                                .itemID(1)
+                                .reviewerEmail("test")
+                                .stars(5)
+                                .dateReviewed(ldt2)
+                                .comments("good")
+                                .build();
+
+                menuItemReview.setId(1);
+
+                // act
+                MvcResult response = mockMvc.perform(
+                        post("/api/menuitemreview/post")
+                        .param("itemID", "1")
+                        .param("reviewerEmail", "test")
+                        .param("stars", "5")
+                        .param("dateReviewed", "2023-01-03T00:00:00")
+                        .param("comments", "good")
+                        .with(csrf()))
+                        .andExpect(status().isOk()).andReturn();
                 // assert
                 String expectedJson = mapper.writeValueAsString(menuItemReview);
                 String responseString = response.getResponse().getContentAsString();
