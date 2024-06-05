@@ -4,12 +4,20 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.web.servlet.MockMvc;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import edu.ucsb.cs156.example.entities.MenuItemReview;
 import edu.ucsb.cs156.example.repositories.MenuItemReviewRepository;
+import edu.ucsb.cs156.example.repositories.UserRepository;
+import edu.ucsb.cs156.example.services.CurrentUserService;
+import edu.ucsb.cs156.example.services.GrantedAuthoritiesService;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
@@ -22,8 +30,14 @@ import edu.ucsb.cs156.example.WebTestCase;
 @ActiveProfiles("integration")
 @DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)
 public class MenuItemReviewWebIT extends WebTestCase {
-    @Autowired
-    MenuItemReviewRepository menuItemReviewRepository;
+        @Autowired
+        public CurrentUserService currentUserService;
+
+        @Autowired
+        public GrantedAuthoritiesService grantedAuthoritiesService;
+
+        @Autowired
+        MenuItemReviewRepository menuItemReviewRepository;
 
     @Test
     public void admin_user_can_create_edit_delete_menu_item_review() throws Exception {
@@ -40,6 +54,8 @@ public class MenuItemReviewWebIT extends WebTestCase {
                         .build();
                                 
         menuItemReviewRepository.save(menuItemReview);
+
+        page.getByText("MenuItemReview").click();
 
         assertThat(page.getByTestId("MenuItemReviewTable-cell-row-0-col-comments")).hasText("ok");
 

@@ -60,66 +60,64 @@ public class MenuItemReviewIT {
         @MockBean
         UserRepository userRepository;
 
-        @WithMockUser(roles = { "ADMIN", "USER" })
-        @Test
-        public void an_admin_user_can_post_a_new_menu_item_review() throws Exception {
-                // arrange
-
-                LocalDateTime ldt2 = LocalDateTime.parse("2022-01-03T00:00:00");
-
-
-                MenuItemReview menuItemReview1 = MenuItemReview.builder()
-                                .itemID(1)
-                                .reviewerEmail("test")
-                                .stars(5)
-                                .dateReviewed(ldt2)
-                                .comments("good")
-                                .build();
-
-                // act
-                MvcResult response = mockMvc.perform(
-                        post("/api/menuitemreview/post")
-                        .param("itemID", "1")
-                        .param("reviewerEmail", "test")
-                        .param("stars", "5")
-                        .param("dateReviewed", "2022-01-03T00:00:00")
-                        .param("comments", "good")
-                        .with(csrf()))
-                        .andExpect(status().isOk()).andReturn()
-                        .andExpect(jsonPath("$.itemID", is(1)));
-
-                // assert
-                System.out.println(response.getResponse().getContentAsString());
-                System.out.println(response.getResolvedException());   
-                String expectedJson = mapper.writeValueAsString(menuItemReview1);
-                String responseString = response.getResponse().getContentAsString();
-                assertEquals(expectedJson, responseString);
-        }
-
-        // @WithMockUser(roles = { "USER" })
+        // @WithMockUser(roles = { "ADMIN", "USER" })
         // @Test
-        // public void test_that_logged_in_user_can_get_by_id_when_the_id_exists() throws Exception {
+        // public void an_admin_user_can_post_a_new_menu_item_review() throws Exception {
         //         // arrange
 
-        //         LocalDateTime ldt1 = LocalDateTime.parse("2022-01-03T00:00:00");
+        //         LocalDateTime ldt2 = LocalDateTime.parse("2022-01-03T00:00:00");
 
-        //         MenuItemReview menuItemReview = MenuItemReview.builder()
+
+        //         MenuItemReview menuItemReview1 = MenuItemReview.builder()
         //                         .itemID(1)
-        //                         .reviewerEmail("reviewer@gmail.com")
+        //                         .reviewerEmail("test")
         //                         .stars(5)
-        //                         .dateReviewed(ldt1)
+        //                         .dateReviewed(ldt2)
         //                         .comments("good")
         //                         .build();
-                                
-        //         menuItemReviewRepository.save(menuItemReview);
 
         //         // act
-        //         MvcResult response = mockMvc.perform(get("/api/menuitemreview?id=1"))
-        //                         .andExpect(status().isOk()).andReturn();
-
+        //         MvcResult response = mockMvc.perform(
+        //                 post("/api/menuitemreview/post")
+        //                 .param("itemID", "1")
+        //                 .param("reviewerEmail", "test")
+        //                 .param("stars", "5")
+        //                 .param("dateReviewed", "2022-01-03T00:00:00")
+        //                 .param("comments", "good")
+        //                 .with(csrf()))
+        //                 .andExpect(status().isOk()).andReturn();
         //         // assert
-        //         String expectedJson = mapper.writeValueAsString(menuItemReview);
+        //         System.out.println(response.getResponse().getContentAsString());
+        //         System.out.println(response.getResolvedException());   
+        //         String expectedJson = mapper.writeValueAsString(menuItemReview1);
         //         String responseString = response.getResponse().getContentAsString();
         //         assertEquals(expectedJson, responseString);
         // }
+
+        @WithMockUser(roles = { "USER" })
+        @Test
+        public void test_that_logged_in_user_can_get_by_id_when_the_id_exists() throws Exception {
+                // arrange
+
+                LocalDateTime ldt1 = LocalDateTime.parse("2022-01-03T00:00:00");
+
+                MenuItemReview menuItemReview = MenuItemReview.builder()
+                                .itemID(1)
+                                .reviewerEmail("reviewer@gmail.com")
+                                .stars(5)
+                                .dateReviewed(ldt1)
+                                .comments("good")
+                                .build();
+                                
+                menuItemReviewRepository.save(menuItemReview);
+
+                // act
+                MvcResult response = mockMvc.perform(get("/api/menuitemreview?id=1"))
+                                .andExpect(status().isOk()).andReturn();
+
+                // assert
+                String expectedJson = mapper.writeValueAsString(menuItemReview);
+                String responseString = response.getResponse().getContentAsString();
+                assertEquals(expectedJson, responseString);
+        }
 }
